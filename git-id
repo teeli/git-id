@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+if [ -z "$1" ]; then
+  echo "Usage: git-id.sh [identity name]"
+  exit 0
+fi
+echo "Changing GIT identity in current repository to $1"
+if [ $1 == 'work' ]; then
+  git config --local user.name "Work user"
+  git config --local user.email "name@company.com"
+elif [ $1 == 'personal' ]; then
+  git config --local user.name "Personal user"
+  git config --local user.email "name@me.com"
+else
+  echo "Identity $1 not recognized." 1>&2
+  exit 1
+fi
+
+echo "Ok"
+exit 0
